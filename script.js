@@ -3,9 +3,10 @@ let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 function addTransaction() {
   const desc = document.getElementById("desc").value;
   const amount = document.getElementById("amount").value;
+  const date = document.getElementById("date").value;
   const type = document.getElementById("type").value;
 
-  if (!desc || !amount) {
+  if (!desc || !amount || !date) {
     alert("Fill all fields");
     return;
   }
@@ -14,6 +15,7 @@ function addTransaction() {
     id: Date.now(),
     desc,
     amount: parseFloat(amount),
+    date,
     type
   };
 
@@ -22,6 +24,7 @@ function addTransaction() {
 
   document.getElementById("desc").value = "";
   document.getElementById("amount").value = "";
+  document.getElementById("date").value = "";
 }
 
 function deleteTransaction(id) {
@@ -47,19 +50,22 @@ function render() {
 
     if (t.type === "income") {
       balance += t.amount;
-      div.innerHTML = `
-        <span>${t.desc}</span>
-        <span class="income">+${t.amount}</span>
-        <button onclick="deleteTransaction(${t.id})">X</button>
-      `;
     } else {
       balance -= t.amount;
-      div.innerHTML = `
-        <span>${t.desc}</span>
-        <span class="expense">-${t.amount}</span>
-        <button onclick="deleteTransaction(${t.id})">X</button>
-      `;
     }
+
+    div.innerHTML = `
+      <span>
+        ${t.desc} <br>
+        <small>${t.date}</small>
+      </span>
+
+      <span class="${t.type}">
+        ${t.type === "income" ? "+" : "-"}${t.amount}
+      </span>
+
+      <button onclick="deleteTransaction(${t.id})">X</button>
+    `;
 
     list.appendChild(div);
   });
