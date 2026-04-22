@@ -4,17 +4,22 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+}
+
+/* PAGE WRAPPER (fixes centering issue across pages) */
+.page {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 /* MAIN CARD */
 .container {
   width: 90%;
-  max-width: 450px;
+  max-width: 700px;
   background: #ffffff;
   padding: 25px;
+  margin: 40px auto;
   border-radius: 15px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
   animation: fadeIn 0.5s ease-in-out;
@@ -127,4 +132,65 @@ h3 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(34, 34, 34, 0.95);
+  backdrop-filter: blur(10px);
+
+  padding: 15px 25px;
+  color: white;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Brand (MyBudget) */
+.navbar h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* Links container */
+.navbar div {
+  display: flex;
+  gap: 20px;
+}
+
+/* Links */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+  padding: 5px 0;
+}
+
+/* Hover effect (underline animation) */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #4facfe;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #4facfe;
+}
+
+.navbar a:hover::after {
+  width: 100%;
 }
