@@ -1,64 +1,130 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* MAIN CARD */
 .container {
+  width: 90%;
   max-width: 450px;
-  margin: 50px auto;
-  background: white;
+  background: #ffffff;
   padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* TITLE */
 h2 {
   text-align: center;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-input, select, button {
+/* INPUTS */
+input, select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.2s;
 }
 
+input:focus, select:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79,172,254,0.5);
+}
+
+/* BUTTON */
 button {
+  width: 100%;
+  padding: 12px;
   background: #4facfe;
   color: white;
   border: none;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
+  transition: 0.3s;
+  margin-top: 5px;
 }
 
 button:hover {
   background: #007bff;
+  transform: scale(1.02);
 }
 
+/* BALANCE */
+h3 {
+  text-align: center;
+  margin-top: 15px;
+  color: #222;
+}
+
+/* TRANSACTION BOX */
 .transaction {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  background: #f9f9f9;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border-left: 5px solid #ddd;
+  transition: 0.2s;
 }
 
+.transaction:hover {
+  transform: scale(1.01);
+  background: #f1f1f1;
+}
+
+/* INCOME / EXPENSE */
 .income {
-  color: green;
+  color: #28a745;
+  font-weight: bold;
 }
 
 .expense {
-  color: red;
+  color: #dc3545;
+  font-weight: bold;
 }
 
+/* DELETE BUTTON */
 .transaction button {
   width: auto;
-  padding: 5px 8px;
-  background: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 5px 10px;
+  background: #ff4d4d;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.transaction button:hover {
+  background: #e60000;
+}
+
+/* DATE TEXT */
+.transaction small {
+  color: #777;
+  font-size: 12px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
